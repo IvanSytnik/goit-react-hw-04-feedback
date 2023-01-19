@@ -101,11 +101,13 @@ import Notification from '../Notification/Notification'
 const [neutral, setNeutral] = useState(0);
 const [good, setGood] = useState(0);
 const [bad, setBad] = useState(0);
-let [total, setTotal] = useState(0);
-let [positive, setPositive] = useState(0);
-
+const [total, setTotal] = useState(0);
+const [positive, setPositive] = useState(0);
+// let total = 0;
+// let positive = 0;
 const handleGood = () => {
     setGood(good + 1)
+    
 }
 
 const handleNeutral = () => {
@@ -116,25 +118,30 @@ const handleBad = () => {
     setBad(bad + 1)
 }
 
-// const handleTotal = () => {
-//     setTotal(total = neutral + good + bad)
-// }
+const handleTotal = (a, b, c) => {
+    setTotal(a + b + c)
+}
 
-// const handlePositive = () => {
-//     setPositive(positive = Math.round((good/total)*100))
-// }
+const handlePositive = (a, d) => {
+    setPositive(Math.round((a/d)*100))
+}
 
 useEffect(
     () => {
-      setTotal(total = neutral + good + bad)
-     
+
+        // setTotal(neutral + good + bad)
+        // total = 
+        handleTotal(neutral, good, bad)
     }, [neutral, good, bad]
 )
 
 useEffect(
     () => {
-      setPositive(positive = Math.round((good/total)*100))
-    }, [total]
+
+        // setPositive(Math.round((good/total)*100))
+        // positive = Math.round((good/total)*100)
+        handlePositive(good, total)
+    }, [total, good]
 )
 
 
